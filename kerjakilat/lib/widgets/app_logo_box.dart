@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 /// Logo KerjaKilat: ikon petir di dalam kotak membulat.
 /// Dipakai ulang di Splash dan halaman Login/Register.

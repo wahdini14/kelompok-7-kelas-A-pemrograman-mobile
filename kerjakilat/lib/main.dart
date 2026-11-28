@@ -1,9 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:provider/provider.dart';
 
 import 'core/app_theme.dart';
 import 'firebase_options.dart';
 import 'routes/app_router.dart';
+import 'services/auth_service.dart';
 
 Future<void> main() async {
   // Wajib dipanggil sebelum memakai Firebase
@@ -22,11 +24,15 @@ class KerjaKilatApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: 'KerjaKilat',
-      debugShowCheckedModeBanner: false,
-      theme: AppTheme.light,
-      routerConfig: appRouter,
+    // AuthService dibagikan ke semua halaman lewat Provider
+    return Provider<AuthService>(
+      create: (_) => AuthService(),
+      child: MaterialApp.router(
+        title: 'KerjaKilat',
+        debugShowCheckedModeBanner: false,
+        theme: AppTheme.light,
+        routerConfig: appRouter,
+      ),
     );
   }
 }
